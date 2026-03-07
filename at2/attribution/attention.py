@@ -27,6 +27,7 @@ import transformers.models
 def infer_model_type(model):
     model_type_to_keyword = {
         "llama": "llama",
+        "mistral": "mistral",
         "phi3": "phi",
         "qwen2": "qwen",
         "gemma3": "gemma",
@@ -87,7 +88,7 @@ def get_layer_attention_weights(
     num_key_value_heads = model.model.config.num_key_value_heads
     head_dim = self_attn.head_dim
 
-    if model_type in ("llama", "qwen2", "gemma3"):
+    if model_type in ("llama", "mistral", "qwen2", "gemma3"):
         query_states = self_attn.q_proj(hidden_states)
         key_states = self_attn.k_proj(hidden_states)
     elif model_type in ("phi3",):
