@@ -28,7 +28,6 @@ def get_model_and_tokenizer(
             model_name,
             torch_dtype=torch_dtype,
             attn_implementation=attn_implementation,
-            trust_remote_code=True,
             **kwargs,
         )
         model.language_model.name_or_path = model.name_or_path
@@ -39,7 +38,6 @@ def get_model_and_tokenizer(
             model_name,
             torch_dtype=torch_dtype,
             attn_implementation=attn_implementation,
-            trust_remote_code=True,
             **kwargs,
         )
     if device is not None:
@@ -47,7 +45,6 @@ def get_model_and_tokenizer(
     tokenizer = AutoTokenizer.from_pretrained(
         model_name,
         padding_side="left",
-        trust_remote_code=True,
     )
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
